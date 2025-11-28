@@ -9,6 +9,7 @@ Trains a simple linear regression model on your simulated dataset and writes:
 Usage:
   python train_and_serialize.py --csv simulated_home_insurance_quotes.csv
 """
+from sklearn.metrics import root_mean_squared_error
 import argparse
 import joblib
 import numpy as np
@@ -73,7 +74,7 @@ def main(csv_path: str, out_model: str = "model.pkl", out_scaler: str = "scaler.
     # Eval
     pred = model.predict(X_test_s)
     mae = mean_absolute_error(y_test, pred)
-    rmse = mean_squared_error(y_test, pred, squared=False)
+    rmse = root_mean_squared_error(y_test, pred)
     r2 = r2_score(y_test, pred)
     print({"MAE": mae, "RMSE": rmse, "R2": r2})
 
