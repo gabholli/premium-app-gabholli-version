@@ -8,7 +8,7 @@ CALIB_JSON = "calib.json"
 
 df = pd.read_csv(CALIB_CSV)
 features = ["Bedrooms", "Square Footage", "Coverage A", "Age of Home"]
-X = df[features].astype(float).values
+X = df[features].astype(float)
 y_true = df["ActualPremium"].astype(float).values
 
 model = joblib.load(MODEL_PATH)
